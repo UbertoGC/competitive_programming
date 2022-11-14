@@ -35,6 +35,9 @@ int main() {
             mejor = max(mejor, i.first);
         }
     }
+    for (int i = 0; i < n; i++){
+        cout<< i <<" --- " << encontrar(d,i) << endl;
+    }
     for(int i = 1; i < d.size(); i++) {
         if(encontrar(d, i-1) != encontrar(d, i)) {
             cout << "IMPOSSIBLE" << endl;
