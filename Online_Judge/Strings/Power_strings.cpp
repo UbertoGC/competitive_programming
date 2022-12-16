@@ -9,16 +9,16 @@ void KMP(string & n){
     int i = 0;
     while (posicion < tamano){
         if (n[posicion - 1] == n[i]){
-            i = i + 1;
+            i++;
             T[posicion] = i;
-            ++posicion;
+            posicion++;
         }
         else if (i > 0){
             i = T[i];
         }
         else{
             T[posicion] = 0;
-            ++posicion;
+            posicion++;
         }
     }
 }
