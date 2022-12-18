@@ -2,50 +2,33 @@
 #include <queue>
 #include <vector>
 using namespace std;
-struct nivelador{
-    int nivel;
-    int rebotes;
-    bool dir;
-};
+void analisis(int nivel,int n, int& cont, bool dir=1){
+    if(n == 0){
+        cont++;
+        return;
+    }
+    if(nivel!=0){
+        if(dir){
+            analisis(nivel-1,n-1,cont,0);
+        }
+        else{
+            analisis(nivel-1,n,cont,0);  
+        }
+    }
+    if(nivel!=2){
+        if(!dir){
+            analisis(nivel+1,n-1,cont,1);
+        }
+        else{
+            analisis(nivel+1,n,cont,1);
+        }
+    }
+}
 int main(){
     int n,cont;
     while(cin>>n){
         cont = 0;
-        queue<nivelador> medio;
-        nivelador primero;
-        primero.nivel = 1;
-        primero.rebotes = n;
-        primero.dir = true;
-        medio.push(primero);
-        while(!medio.empty()){
-            nivelador a = medio.front();
-            medio.pop();
-            if(a.rebotes == 0){
-                cont++;
-            }
-            else{
-                if(a.nivel!=0){
-                    nivelador b;
-                    b.nivel=a.nivel-1;
-                    b.dir=false;
-                    b.rebotes=a.rebotes;
-                    if(a.dir){
-                        b.rebotes--;
-                    }
-                    medio.push(b);
-                }
-                if(a.nivel!=2){
-                    nivelador b;
-                    b.nivel=a.nivel+1;
-                    b.dir=true;
-                    b.rebotes=a.rebotes;
-                    if(!a.dir){
-                        b.rebotes--;
-                    }
-                    medio.push(b);
-                }
-            }
-        }
+        analisis(1,n,cont);
         cout<<cont<<endl;
     }
     return 0;
