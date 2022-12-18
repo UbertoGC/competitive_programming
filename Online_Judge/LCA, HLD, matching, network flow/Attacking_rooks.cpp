@@ -7,7 +7,7 @@
 using namespace std;
 #define INF 1e9
 int p[10010];
-int s, t, mf, n, nc, nf;
+int s, t, resultado, n, nc, nf;
 pair<int,int> ids[101][101];
 int res[10010][10010], tw[10010], distancia[10010];
 vector<int> grafo[10010];
@@ -130,8 +130,8 @@ int main(){
         fil_cont();
         col_cont();
         crear_grafo();
-        mf = f_max();
-        cout << mf << endl;
+        resultado = f_max();
+        cout << resultado << endl;
     }
     return 0;
 }
