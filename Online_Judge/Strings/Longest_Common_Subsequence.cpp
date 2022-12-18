@@ -5,8 +5,7 @@ int LCS(string s1,string s2){
  	int i,j;
  	int lcs[s1.size()+1][s2.size()+1];
  	for(i=0;i<=s1.size();i++){
-        for(j=0;j<=s2.size();j++)
-        {
+        for(j=0;j<=s2.size();j++){
             if(i==0 || j==0) {
                 lcs[i][j]=0;	  
             }
